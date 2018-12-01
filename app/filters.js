@@ -11,9 +11,9 @@ module.exports = function (env) {
     add your methods to the filters obj below this comment block:
     @example:
 
-    filters.sayHi = function(name) {
-        return 'Hi ' + name + '!'
-    }
+    env.addFilter('shorten', function(str, count) {
+    return str.slice(0, count || 5);
+});
 
     Which in your templates would be used as:
 
@@ -41,5 +41,19 @@ module.exports = function (env) {
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
+
+  env.addFilter('currentStep', function(steps) {
+    return steps.find(step => step.isActive);
+  });
+
+  env.addFilter('previousStep', function(steps) {
+    return steps[steps.findIndex(step => step.isActive) - 1];
+  });
+
+  env.addFilter('nextStep', function(steps) {
+    return steps[steps.findIndex(step => step.isActive) + 1];
+  });
+
+
   return filters
 }

@@ -1,0 +1,156 @@
+{% extends "kupa-auta/layout_step_by_step_nav.html" %}
+
+{% block mainContent %}
+  <h1 class="govuk-heading-l">
+    {{ (navigationSteps | currentStep).title }}
+  </h1>
+  <p>
+    Nové vozidlo je nutné prihlásiť do evidencie na <u>dopravnom inšpektoráte</u>.
+  </p>
+  <p>
+    {% if data.prihlasenie === "osobne" %}
+      Pre prihlásenie vozidla na dopravnom inšpektoráte potrebujete predložiť nasledujúce dokumenty:
+    {% endif %}
+    {% if data.prihlasenie === "predajca" %}
+      Pre prihlásenie vozidla na dopravnom inšpektoráte potrebujete predajcovi odovzdať nasledujúce dokumenty:
+    {% endif %}
+    {% if data.prihlasenie === "sprostredkovatel" %}
+      Pre prihlásenie vozidla na dopravnom inšpektoráte potrebujete sprostredkovateľovi odovzdať nasledujúce dokumenty:
+    {% endif %}
+  </p>
+  <p>
+    <ol class="govuk-list govuk-list--number">
+      <li>
+        Preukaz totožnosti
+      </li>
+      <li>
+        Vyplnenú
+        <a class="govuk-link" href="https://www.minv.sk/?prihlasenie-noveho-vozidla&subor=205052">
+          žiadosť o zapísanie vozidla do evidencie
+        </a>.
+        V prípade, že ide o vozidlo na leasing, treba v sekcii
+        <b>Vlastník vozidla</b> vyplniť údaje leasingovej spoločnosti. V tomto prípade ste totiž držiteľom vozidla Vy,
+        ale vlastníkom je leasingová spoločnosť.
+      </li>
+      <li>
+        Osvedčenie o evidencii, časť II (“veľký techničák”).
+      </li>
+      <li>
+        Doklad o nadobudnutí vozidla - faktúra, leasingová zmluva alebo darovacia zmluva.</i>
+      </li>
+      <li>
+        Potvrdenie o poistení zodpovednosti za škodu spôsobenú prevádzkou motorového vozidla. Tento dokument získate
+        v poisťovni po uzatvorení poistenia zodpovednosti za škodu spôsobenú prevádzkou motorového vozidla (spravidla
+        býva súčasťou povinného zmluvného poistenia (PZP)).
+      </li>
+      <li>
+        Certifikát konformity COC. Tento dokument si pri kúpe vyžiadajte od predajcu.
+      </li>
+      {% if data.prihlasenie === "predajca" or data.prihlasenie === "sprostredkovatel" %}
+      <li>
+        Splnomocnenie s úradne overeným podpisom splnomocniteľa (Vás).
+      </li>
+      {% endif %}
+      <li>
+        V prípade, že kupujete auto na leasing, je potrebné navyše pripraviť overené splnomocnenie leasingovej
+        spoločnosti. Tento dokument si vyžiadajte od leasingovej spoločnosti.
+      </li>
+    </ol>
+  </p>
+
+  <h2>Extra poplatky</h2>
+
+  <p>
+    {% if data.prihlasenie === "osobne" %}
+      Na dopravnom inšpektoráte uhradíte nasledovné poplatky:
+    {% endif %}
+
+    {% if data.prihlasenie === "predajca" %}
+      Predajca od vás môže požadovať dodatočné poplatky, vzťahujúce sa k nasledovným úhradám:
+    {% endif %}
+
+    {% if data.prihlasenie === "sprostredkovatel" %}
+      Sprostredkovateľ od vás môže požadovať dodatočné poplatky, vzťahujúce sa k nasledovným úhradám:
+    {% endif %}
+  </p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      Správny poplatok za prvý zápis držiteľa motorového vozidla podľa výkonu motora. Poplatok viete uhradiť priamo
+      na dopravnom inšpektoráte, kde jeho výšku určia na základe
+      <a class="govuk-link" href="https://www.minv.sk/?spravne-poplatky-1">sadzobníka</a>
+      podľa výkonu motora (potrebné informácie sa nachádzajú v technickom preukaze). Jeho výška sa pohybuje od 66 do
+      3933 eur.
+    </li>
+    <li>
+      Je možné požiadať o tzv. urýchlené vydanie čipovej karty osvedčenia o evidencii časť I do dvoch pracovných dní.
+      V takomto prípade je potrebné uhradiť poplatok vo výške 30 €.
+    </li>
+  </ul>
+
+  <p>
+    {% if data.prihlasenie === "predajca" %}
+    Predajca od Vás môže vyžadovať navyše aj úhradu poplatku za sprostredkovanie.
+    {% endif %}
+
+    {% if data.prihlasenie === "sprostredkovatel" %}
+    Sprostredkovateľ od Vás môže vyžadovať navyše aj úhradu poplatku za sprostredkovanie.
+    {% endif %}
+  </p>
+
+  {% if data.prihlasenie === "osobne" %}
+  <h2>Cesta na dopravný inšpektorát</h2>
+  <p>
+    Dokumenty zhrnuté v predchádzajúcom kroku teraz musíte zaniesť na
+    <a class="govuk-link" href="http://www.minv.sk/?strankove-dni-a-hodiny-na-pracoviskach">
+      dopravný inšpektorát v mieste svojho bydliska
+    </a>.
+  <p>
+  <p>
+    Ak máte elektronický občiansky preukaz, viete si dohodnúť termín na dopravnom inšpektoráte podľa tohto postupu:
+    <ol class="govuk-list govuk-list--number">
+      <li>prihláste sa na <a class="govuk-link" href="https://portal.minv.sk/wps/myportal">portál ministerstva vnútra</a></li>
+      <li>
+        <a class="govuk-link" href="https://portal.minv.sk/wps/wcm/myconnect/sk/site/main/zivotne-situacie/vozidla/inspektorat-termin/ziadost-termin-inspektorat/">
+        rezervujte si termín</a>
+      </li>
+    </ol>
+  </p>
+  <p>
+    Na dopravnom inšpektoráte odovzdáte pripravené dokumenty a uhradíte správny poplatok.
+  </p>
+
+  <p>Po kladnom vybavení žiadosti získate od dopravného inšpektorátu na počkanie:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>tabuľky s Evidenčným číslom vozidla (EČV), 2 kusy</li>
+    <li>Osvedčenie o evidencii, časť II (tzv.“veľký technický preukaz”) doplnený o EČV</li>
+  </ul>
+  <p>Poštou získate do 30 dní (resp. skôr, ak ste požiadali o zrýchlené dodanie) Osvedčenie o evidencii, časť I (tzv.“malý technický preukaz”).</p>
+
+  {% endif %}
+
+  {% if data.prihlasenie === "predajca" %}
+    <p>Po kladnom vybavení žiadosti na dopravnom inšpektoráte Vám predajca odovzdá:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>tabuľky s Evidenčným číslom vozidla (EČV), 2 kusy</li>
+      <li>Osvedčenie o evidencii, časť II (tzv.“veľký technický preukaz”) doplnený o EČV</li>
+    </ul>
+    <p>Poštou získate do 30 dní (resp. skôr, ak ste požiadali o zrýchlené dodanie) Osvedčenie o evidencii, časť I (tzv.“malý technický preukaz”).</p>
+  {% endif %}
+
+  {% if data.prihlasenie === "sprostredkovatel" %}
+    <p>Po kladnom vybavení žiadosti na dopravnom inšpektoráte Vám sprostredkovateľ odovzdá:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>tabuľky s Evidenčným číslom vozidla (EČV), 2 kusy</li>
+      <li>Osvedčenie o evidencii, časť II (tzv.“veľký technický preukaz”) doplnený o EČV</li>
+    </ul>
+    <p>Poštou získate do 30 dní (resp. skôr, ak ste požiadali o zrýchlené dodanie) Osvedčenie o evidencii, časť I (tzv.“malý technický preukaz”).</p>
+  {% endif %}
+
+  {{ govukButton({
+    text: "< " + navigationSteps[0].title,
+    href: navigationSteps[0].href,
+    classes: "govuk-button--prev govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+  }) }}
+
+{% endblock %}

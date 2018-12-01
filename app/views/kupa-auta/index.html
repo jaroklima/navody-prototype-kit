@@ -1,0 +1,31 @@
+{% extends "kupa-auta/layout_step_by_step_nav.html" %}
+
+{% block mainContent %}
+  <h1 class="govuk-heading-xl">
+    {{serviceName}}
+  </h1>
+
+  <p>
+    Návod ako prihlásiť nové vozidlo do Národnej evidencie vozidiel. Tento úkon je nutné vykonať do 30 dní od nadobudnutia vozidla.
+  </p>
+  <p>
+    Vzťahuje sa na
+    <ul class="govuk-list govuk-list--bullet">
+      <li>vozidlá zakúpené od autorizovaného predajcu</li>
+      <li>prvé prihlásenie vozidla, t.j. vozidlo ešte nemá pridelené EČV (“ŠPZ”)</li>
+      <li>vozidlá kupované na Slovensku</li>
+      <li>vozidlá, ktoré plánujete využívať na Slovensku</li>
+    </ul>
+  </p>
+
+  <p>
+     <h2>Kto bude vozidlo prihlasovať?</h2>
+     <ul class="govuk-list govuk-list--bullet">
+       <li><a class="govuk-link" href="{{ serviceUrl + '/prihlasenie-osobne'}}">Vozidlo prihlásim sám</a></li>
+       <li><a class="govuk-link" href="{{ serviceUrl + '/prihlasenie-predajca'}}">Vozidlo prihlási predajca</a></li>
+       <li><a class="govuk-link" href="{{ serviceUrl + '/prihlasenie-sprostredkovatel'}}">Vozidlo prihlási sprostredkovateľ (napr. leasingová firma)</a></li>
+     </ul>
+  </p>
+
+
+{% endblock %}
